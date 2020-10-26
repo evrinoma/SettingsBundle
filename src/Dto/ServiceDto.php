@@ -5,6 +5,7 @@ namespace Evrinoma\SettingsBundle\Dto;
 use Evrinoma\DtoBundle\Annotation\ApartAnnotation\DtoAdapterItem;
 use Evrinoma\DtoBundle\Annotation\DtoAdapter;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
+use Evrinoma\DtoBundle\Dto\DtoInterface;
 
 /**
  * Class ServiceDto
@@ -55,6 +56,6 @@ class ServiceDto extends AbstractDto
      */
     public function lookingForRequest()
     {
-        return null;
+        return DtoInterface::DEFAULT_LOOKING_REQUEST;
     }
 }
