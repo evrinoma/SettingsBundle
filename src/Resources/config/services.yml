@@ -8,4 +8,3 @@ services:
   Evrinoma\SettingsBundle\Manager\SettingsManager:
     alias: evrinoma.settings.manager
     public: true
-    deprecated:
