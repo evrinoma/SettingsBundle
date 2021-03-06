@@ -1,16 +1,9 @@
 <?php
 
-namespace Evrinoma\SettingsBundle\Dto\ApartDto;
+namespace Evrinoma\SettingsBundle\Std;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Evrinoma\DtoBundle\Dto\AbstractApartDto;
 
-/**
- * Class DescriptionDto
- *
- * @package Evrinoma\SettingsBundle\Dto\ApartDto
- */
-class DescriptionDto extends AbstractApartDto
+class DescriptionStd
 {
 //region SECTION: Fields
     /**
@@ -32,7 +25,7 @@ class DescriptionDto extends AbstractApartDto
      */
     protected $date;
     /**
-     * @var DescriptionDto
+     * @var DescriptionStd
      */
     protected $parent = null;
     /**
@@ -53,11 +46,11 @@ class DescriptionDto extends AbstractApartDto
     }
 
     /**
-     * @param DescriptionDto $child
+     * @param DescriptionStd $child
      *
      * @return $this
      */
-    public function addChild(DescriptionDto $child)
+    public function addChild(DescriptionStd $child)
     {
         $this->children[] = $child;
         $child->setParent($this);
@@ -110,7 +103,7 @@ class DescriptionDto extends AbstractApartDto
     }
 
     /**
-     * @return DescriptionDto|null
+     * @return DescriptionStd|null
      */
     public function getChildFirst()
     {
@@ -118,11 +111,11 @@ class DescriptionDto extends AbstractApartDto
     }
 
     /**
-     * @param DescriptionDto $parent
+     * @param DescriptionStd $parent
      *
-     * @return DescriptionDto
+     * @return DescriptionStd
      */
-    public function setParent(DescriptionDto $parent): DescriptionDto
+    public function setParent(DescriptionStd $parent): DescriptionStd
     {
         $this->parent = $parent;
 
@@ -132,7 +125,7 @@ class DescriptionDto extends AbstractApartDto
     /**
      * @param string $name
      *
-     * @return DescriptionDto
+     * @return DescriptionStd
      */
     public function setName(string $name)
     {
@@ -144,7 +137,7 @@ class DescriptionDto extends AbstractApartDto
     /**
      * @param string $description
      *
-     * @return DescriptionDto
+     * @return DescriptionStd
      */
     public function setDescription(string $description)
     {
@@ -156,7 +149,7 @@ class DescriptionDto extends AbstractApartDto
     /**
      * @param string $instance
      *
-     * @return DescriptionDto
+     * @return DescriptionStd
      */
     public function setInstance(string $instance)
     {
@@ -168,7 +161,7 @@ class DescriptionDto extends AbstractApartDto
     /**
      * @param \DateTime $date
      *
-     * @return DescriptionDto
+     * @return DescriptionStd
      */
     public function setDate($date)
     {

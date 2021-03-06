@@ -2,35 +2,18 @@
 
 namespace Evrinoma\SettingsBundle\Dto;
 
-use Evrinoma\DtoBundle\Annotation\ApartAnnotation\DtoAdapterItem;
-use Evrinoma\DtoBundle\Annotation\DtoAdapter;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 
-/**
- * Class ServiceDto
- *
- * @package Evrinoma\SettingsBundle\Dto\ApartDto
- */
 class ServiceDto extends AbstractDto
 {
 
     /**
-     * @DtoAdapter(adaptors={
-     *     @DtoAdapterItem(class="Evrinoma\SettingsBundle\Dto\SettingsDto",method="setClassSettingsEntity")
-     * })
-     */
-    public function getClass()
-    {
-        return parent::getClass();
-    }
-
-    /**
      * @inheritDoc
      */
-    protected function getClassEntity()
+    protected function getClassEntity():?string
     {
-        return static::class;
+        return null;
     }
 
     /**
@@ -46,16 +29,9 @@ class ServiceDto extends AbstractDto
     /**
      * @inheritDoc
      */
-    public function toDto($request)
+    public function toDto($request):DtoInterface
     {
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function lookingForRequest()
-    {
-        return DtoInterface::DEFAULT_LOOKING_REQUEST;
-    }
 }

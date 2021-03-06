@@ -1,19 +1,12 @@
 <?php
 
-namespace Evrinoma\SettingsBundle\Dto\ApartDto;
+namespace Evrinoma\SettingsBundle\Std;
 
-use Evrinoma\DtoBundle\Dto\AbstractApartDto;
-
-/**
- * Class ServerDto
- *
- * @package Evrinoma\SettingsBundle\Dto\ApartDto
- */
-class ServerDto extends AbstractApartDto
+class ServerStd
 {
 //region SECTION: Fields
     /**
-     * @var DescriptionDto
+     * @var DescriptionStd
      */
     protected $description;
 
@@ -59,7 +52,7 @@ class ServerDto extends AbstractApartDto
     /**
      * @param string $type
      *
-     * @return ServerDto
+     * @return ServerStd
      */
     public function setType(string $type)
     {
@@ -69,9 +62,9 @@ class ServerDto extends AbstractApartDto
     }
 
     /**
-     * @return DescriptionDto
+     * @return DescriptionStd
      */
-    public function getDescription(): ?DescriptionDto
+    public function getDescription(): ?DescriptionStd
     {
         return $this->description;
     }
@@ -93,11 +86,11 @@ class ServerDto extends AbstractApartDto
     }
 
     /**
-     * @param DescriptionDto $description
+     * @param DescriptionStd $description
      *
-     * @return ServerDto
+     * @return ServerStd
      */
-    public function setDescription(DescriptionDto $description): ServerDto
+    public function setDescription(DescriptionStd $description): ServerStd
     {
         $this->description = $description;
 
@@ -107,9 +100,9 @@ class ServerDto extends AbstractApartDto
     /**
      * @param string $host
      *
-     * @return ServerDto
+     * @return ServerStd
      */
-    public function setHost(string $host): ServerDto
+    public function setHost(string $host): ServerStd
     {
         $this->host = $host;
 
@@ -119,9 +112,9 @@ class ServerDto extends AbstractApartDto
     /**
      * @param string $port
      *
-     * @return ServerDto
+     * @return ServerStd
      */
-    public function setPort(string $port): ServerDto
+    public function setPort(string $port): ServerStd
     {
         $this->port = $port;
 
@@ -131,9 +124,9 @@ class ServerDto extends AbstractApartDto
     /**
      * @param bool $isRemote
      *
-     * @return ServerDto
+     * @return ServerStd
      */
-    public function setRemote(bool $isRemote = true): ServerDto
+    public function setRemote(bool $isRemote = true): ServerStd
     {
         $this->isRemote = $isRemote;
 

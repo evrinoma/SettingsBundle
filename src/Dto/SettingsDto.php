@@ -28,7 +28,7 @@ class SettingsDto extends AbstractDto
     /**
      * @return mixed
      */
-    protected function getClassEntity()
+    protected function getClassEntity(): ?string
     {
         return Settings::class;
     }
@@ -54,7 +54,7 @@ class SettingsDto extends AbstractDto
      *
      * @return DtoInterface
      */
-    public function toDto($request)
+    public function toDto($request): DtoInterface
     {
         $settings            = $request->get('settings');
         $classSettingsEntity = $request->get('classEntity');
@@ -98,13 +98,6 @@ class SettingsDto extends AbstractDto
         return $this->id;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function lookingForRequest()
-    {
-        return DtoInterface::DEFAULT_LOOKING_REQUEST;
-    }
 
     /**
      * @param mixed $classSettingsEntity
