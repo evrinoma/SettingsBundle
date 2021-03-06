@@ -3,11 +3,11 @@
 
 namespace Evrinoma\SettingsBundle\DependencyInjection;
 
+use Evrinoma\SettingsBundle\EvrinomaSettingsBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class EvrinomaSettingsBundleExtension
@@ -27,7 +27,7 @@ class EvrinomaSettingsBundleExtension extends Extension
 //region SECTION: Getters/Setters
     public function getAlias()
     {
-        return 'settings';
+        return EvrinomaSettingsBundle::SETTINGS_BUNDLE;
     }
 //endregion Getters/Setters
 }

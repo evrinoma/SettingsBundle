@@ -14,6 +14,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class EvrinomaSettingsBundle extends Bundle
 {
+    public const SETTINGS_BUNDLE = 'seettings';
+
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
