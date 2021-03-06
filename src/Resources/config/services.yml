@@ -3,7 +3,6 @@ services:
     class: Evrinoma\SettingsBundle\Manager\SettingsManager
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@evrinoma.dto.factory.adaptor'
 
   Evrinoma\SettingsBundle\Manager\SettingsManager:
     alias: evrinoma.settings.manager

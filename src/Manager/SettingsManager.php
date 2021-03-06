@@ -3,8 +3,8 @@
 namespace Evrinoma\SettingsBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Evrinoma\DtoBundle\Dto\AbstractDto;
-use Evrinoma\DtoBundle\Factory\FactoryAdaptor;
+use Doctrine\ORM\Query;
+use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\SettingsBundle\Dto\SettingsDto;
 use Evrinoma\SettingsBundle\Entity\Settings;
 use Evrinoma\UtilsBundle\Manager\AbstractEntityManager;
@@ -25,51 +25,26 @@ class SettingsManager extends AbstractEntityManager implements SettingsManagerIn
      * @var string
      */
     protected $repositoryClass = Settings::class;
-
-    /**
-     * @var FactoryAdaptor
-     */
-    private $factoryAdaptor;
-//endregion Fields
-
-//region SECTION: Constructor
-    /**
-     * SearchManager constructor.
-     *
-     * @param EntityManagerInterface $entityManager
-     * @param FactoryAdaptor         $factoryAdaptor
-     */
-    public function __construct(EntityManagerInterface $entityManager, FactoryAdaptor $factoryAdaptor)
-    {
-        parent::__construct($entityManager);
-
-        $this->factoryAdaptor = $factoryAdaptor;
-    }
-//endregion Constructor
+    //endregion Fields
 
 //region SECTION: Public
     /**
-     * @param AbstractDto $dto
+     * @param DtoInterface $dto
      *
      * @return array|mixed
      */
-    public function toSettings(AbstractDto $dto)
+    public function toSettings(DtoInterface $dto)
     {
         if ($dto) {
-
-            $adaptor = ($dto->getFactoryAdapter()) ? $dto->getFactoryAdapter() : $this->factoryAdaptor;
-
-            $settingsDto = $adaptor->setFrom($dto)->setTo(SettingsDto::class)->adapter();
-
-            return $this->getSettings($settingsDto);
+            return $this->getSettings($dto);
         }
 
         return [];
     }
 
-    public function saveCollection(AbstractDto $dto, $entitys)
+    public function saveCollection(DtoInterface $dto, $entities)
     {
-        foreach ($entitys as $entity) {
+        foreach ($entities as $entity) {
             /** @var SettingsDto $item */
             foreach ($dto->generatorClone() as $item) {
                 if ($item->getId() === $entity->getId()) {
@@ -85,22 +60,23 @@ class SettingsManager extends AbstractEntityManager implements SettingsManagerIn
 
 //region SECTION: Getters/Setters
     /**
-     * @param SettingsDto $settingsDto
+     * @param DtoInterface $dto
      *
      * @return mixed
      */
-    public function getSettings($settingsDto)
+    public function getSettings($dto)
     {
         $builder = $this->repository->createQueryBuilder('settings');
 
         $builder->where('settings.active != \'d\'');
 
-        if ($settingsDto->getClassSettingsEntity()) {
+        if ($dto->getClass()) {
             $builder->andWhere('settings.type = :classEntity')
-                ->setParameter('classEntity', $settingsDto->getClassSettingsEntity());
+                ->setParameter('classEntity', $dto->getClass());
         }
-
-        return $builder->getQuery()->getResult();
+        return $builder->getQuery()
+            ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true)
+            ->getResult();
     }
 
     /**

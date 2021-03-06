@@ -3,7 +3,7 @@
 
 namespace Evrinoma\SettingsBundle\Manager;
 
-use Evrinoma\DtoBundle\Dto\AbstractDto;
+use Evrinoma\DtoBundle\Dto\DtoInterface;
 
 /**
  * Interface SettingsManagerInterface
@@ -13,7 +13,7 @@ use Evrinoma\DtoBundle\Dto\AbstractDto;
 interface SettingsManagerInterface
 {
 //region SECTION: Getters/Setters
-    public function toSettings(AbstractDto $dto);
-    public function saveCollection(AbstractDto $dto, $entitys);
+    public function toSettings(DtoInterface $dto);
+    public function saveCollection(DtoInterface $dto, array $entities);
 //endregion Getters/Setters
 }
