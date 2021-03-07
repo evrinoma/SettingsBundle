@@ -4,7 +4,6 @@ namespace Evrinoma\SettingsBundle\Dto;
 
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
-use Evrinoma\SettingsBundle\Entity\Settings;
 use Evrinoma\UtilsBundle\Entity\ActiveTrait;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,36 +16,11 @@ class SettingsDto extends AbstractDto
 {
 
 //region SECTION: Fields
-
     use ActiveTrait;
     private $id;
     private $classSettingsEntity;
     private $files;
 //endregion Fields
-
-//region SECTION: Protected
-    /**
-     * @return mixed
-     */
-    protected function getClassEntity(): ?string
-    {
-        return Settings::class;
-    }
-//endregion Protected
-
-//region SECTION: Public
-    /**
-     * @param Settings $entity
-     *
-     * @return mixed
-     */
-    public function fillEntity($entity)
-    {
-        $entity->setActive($this->getActive());
-
-        return $entity;
-    }
-//endregion Public
 
 //region SECTION: Dto
     /**
@@ -97,7 +71,6 @@ class SettingsDto extends AbstractDto
     {
         return $this->id;
     }
-
 
     /**
      * @param mixed $classSettingsEntity
