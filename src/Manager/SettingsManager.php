@@ -2,7 +2,6 @@
 
 namespace Evrinoma\SettingsBundle\Manager;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\SettingsBundle\Dto\SettingsDto;
@@ -25,8 +24,7 @@ class SettingsManager extends AbstractEntityManager implements SettingsManagerIn
      * @var string
      */
     protected $repositoryClass = Settings::class;
-    //endregion Fields
-
+//endregion Fields
 //region SECTION: Public
     /**
      * @param DtoInterface $dto
@@ -44,9 +42,9 @@ class SettingsManager extends AbstractEntityManager implements SettingsManagerIn
 
     public function saveCollection(DtoInterface $dto, $entities)
     {
-        foreach ($entities as $entity) {
-            /** @var SettingsDto $item */
-            foreach ($dto->generatorClone() as $item) {
+        /** @var SettingsDto $item */
+        foreach ($dto->getSettingsDto() as $item) {
+            foreach ($entities as $entity) {
                 if ($item->getId() === $entity->getId()) {
                     $item->fillEntity($entity);
                     break;
