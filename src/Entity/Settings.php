@@ -3,6 +3,7 @@
 namespace Evrinoma\SettingsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Evrinoma\UtilsBundle\Entity\ActiveInterface;
 use Evrinoma\UtilsBundle\Entity\ActiveTrait;
 
 /**
@@ -13,7 +14,7 @@ use Evrinoma\UtilsBundle\Entity\ActiveTrait;
  * @ORM\Entity
  * @ORM\Table(name="settings")
  */
-class Settings
+class Settings implements ActiveInterface
 {
     use ActiveTrait;
 

@@ -6,6 +6,7 @@ use Evrinoma\DtoBundle\Adaptor\EntityAdaptorInterface;
 use Evrinoma\DtoBundle\Dto\AbstractDto;
 use Evrinoma\DtoBundle\Dto\DtoInterface;
 use Evrinoma\SettingsBundle\Entity\Settings;
+use Evrinoma\UtilsBundle\Entity\ActiveInterface;
 use Evrinoma\UtilsBundle\Entity\ActiveTrait;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @package Evrinoma\SettingsBundle\Dto
  */
-class SettingsDto extends AbstractDto implements EntityAdaptorInterface
+class SettingsDto extends AbstractDto implements EntityAdaptorInterface, ActiveInterface
 {
     //region SECTION: Fields
     use ActiveTrait;
