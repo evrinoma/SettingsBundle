@@ -68,7 +68,7 @@ class SettingsDto extends AbstractDto implements EntityAdaptorInterface, ActiveI
      *
      * @return DtoInterface
      */
-    public function toDto($request): DtoInterface
+    public function toDto(Request $request): DtoInterface
     {
         $class = $request->get(DtoInterface::DTO_CLASS);
 
